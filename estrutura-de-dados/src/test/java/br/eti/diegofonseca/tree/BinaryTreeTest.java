@@ -8,6 +8,7 @@ package br.eti.diegofonseca.tree;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
 /**
  *
@@ -15,8 +16,8 @@ import org.junit.Rule;
  */
 public class BinaryTreeTest {
     
-    //@Rule
-    //public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
     
     public BinaryTreeTest() {
     }
@@ -51,7 +52,51 @@ public class BinaryTreeTest {
     @Test
     public void testShow() {
         Node root = new Node(10);
-        BinaryTree.show(root);
-        //assertEquals("hello world", systemOutRule.getLog());
+        BinaryTree.show(root);  
+        assertEquals("10 | ", systemOutRule.getLog());
+    }
+    
+    /**
+     * Test of height method, of class BinaryTree.
+     */
+    @Test
+    public void testHeight() {
+        Node root = new Node(10);
+        BinaryTree.show(root);  
+        root = BinaryTree.insert(root, 13);
+        root = BinaryTree.insert(root, 15);
+        root = BinaryTree.insert(root, 8);
+        root = BinaryTree.insert(root, 6);
+        root = BinaryTree.insert(root, 9);
+        root = BinaryTree.insert(root, 12);
+              
+        assertEquals(3, BinaryTree.height(root));
+        
+        root = BinaryTree.insert(root, 16);
+        root = BinaryTree.insert(root, 7);
+        root = BinaryTree.insert(root, 5);
+        assertEquals(4, BinaryTree.height(root));
+    }
+    
+    
+    
+    /**
+     * Test of search method, of class BinaryTree.
+     */
+    @Test
+    public void testSearch() {
+        Node root = new Node(10);
+        BinaryTree.show(root);  
+        root = BinaryTree.insert(root, 13);
+        root = BinaryTree.insert(root, 15);
+        root = BinaryTree.insert(root, 8);
+        root = BinaryTree.insert(root, 6);
+        root = BinaryTree.insert(root, 9);
+        root = BinaryTree.insert(root, 12);
+        root = BinaryTree.insert(root, 16);
+        root = BinaryTree.insert(root, 7);
+        root = BinaryTree.insert(root, 5);
+        Node found = BinaryTree.search(root, 16);
+        assertEquals(16, found.value);
     }
 }

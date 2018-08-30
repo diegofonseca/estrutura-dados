@@ -43,4 +43,22 @@ public class BinaryTree {
             show(root.right);
         }
     }
+    
+    public static int height(Node root) {  
+        if (root == null)
+            return 0;
+        else {
+            return 1 + Integer.max(height(root.left), height(root.right));  
+        }
+    }
+    
+    public static Node search(Node root, int value) {
+        if (root == null || root.value == value)
+            return root;
+        
+        if (root.value > value)
+            return search(root.left, value);
+        else
+            return search(root.right, value);        
+    }
 }

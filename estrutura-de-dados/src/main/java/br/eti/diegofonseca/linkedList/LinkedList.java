@@ -5,6 +5,7 @@ package br.eti.diegofonseca.linkedList;
  */
 public class LinkedList {
     public Node head;
+    public Node last;
     
     public void show() {
         Node head = this.head;
@@ -17,6 +18,9 @@ public class LinkedList {
     public void push(int value) {
         Node new_node = new Node(value);
         
+        if (head == null)
+            last = new_node;
+        
         new_node.next = head;
         
         head = new_node;
@@ -27,14 +31,12 @@ public class LinkedList {
         
         if (head == null) {
             head = new_node;
-            return;
+            last = new_node;
         }
-        
-        Node last = head;
-        while (last.next != null) 
-            last = last.next;
-        
-        last.next = new_node;
+        else {
+            last.next = new_node;
+            last = new_node;
+        }
     }
     
     public void delete(int value) {

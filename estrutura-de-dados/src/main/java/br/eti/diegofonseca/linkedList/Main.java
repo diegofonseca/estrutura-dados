@@ -18,23 +18,25 @@ public class Main {
         while (true) {
             String op = JOptionPane.showInputDialog(
                 "Escolha uma opção:" +
-                "\n 1 - Insert begin" +
-                "\n 2 - Insert end" +
+                "\n 1 - Insert at the begging" +
+                "\n 2 - Insert at the end" +
                 "\n 3 - Remove" +
                 "\n 4 - Show" +
                 "\n 5 - Close"
             );
             if (op.equals("1")) {                
-                l.push(ler("Type a value to insert"));
+                l.push(ler("Type the value you want to insert"));
             }
             if (op.equals("2")) {
-                l.append(ler("Type a value to insert"));
+                l.append(ler("Type the value you want to insert"));
             }
             if (op.equals("3")) {
-                l.delete(ler("Type a value to remove"));
+                l.delete(ler("Type the value you want to remove"));
             }
             if (op.equals("4")) {
+                System.out.print("..:: ");
                 l.show();
+                System.out.println("::..");
             }
             if (op.equals("5")) {
                 return;
